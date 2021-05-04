@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cheese</title>
+    <style>
+      html {
+        background-color: #fcecdd;
+      }
+
+      body {
+        width: 60%;
+        margin: auto;
+        text-align: center;
+      }
+
+      h1 {
+        color: #fea82f;
+        font-size: 100px;
+        margin: 20px;
+      }
+      p {
+        font-size: 20px;
+      }
+
+      .photo {
+        width: 70%;
+        margin-top: 5px;
+        border: 12px solid white;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        opacity: 0;
+        transform: translateY(4em), rotateZ(-5deg);
+        transition: transform 4s 0.25s cubic-bezier(0, 1, 0.3, 1),
+          opacity 0.3s 0.25s ease-out;
+        will-change: transform, opacity;
+      }
+
+      .photo.is-visible {
+        opacity: 1;
+        transform: rotateZ(-2deg);
+      }
+
+      .endText {
+        font-size: 100px;
+        font-family: "Dancing Script", cursive;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Cheese</h1>
+
+    <h2>What is Cheese?</h2>
+    <p>
+      Cheese is a dairy product, derived from milk and produced in wide ranges
+      of flavors, textures and forms by coagulation of the milk protein casein.
+      It comprises proteins and fat from milk, usually the milk of cows,
+      buffalo, goats, or sheep. During production, the milk is usually acidified
+      and the enzymes of rennet (or bacterial enzymes with similar activity) are
+      added to cause the milk proteins (casein) to coagulate. The solids (curd)
+      are separated from the liquid (whey) and pressed into final form.[1] Some
+      cheeses have aromatic molds on the rind, the outer layer, or throughout.
+      Most cheeses melt at cooking temperature.
+    </p>
+    <img
+      class="photo show-on-scroll"
+      src="https://images.unsplash.com/photo-1552767059-ce182ead6c1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
+    />
+    <p>
+      Over a thousand types of cheese exist and are currently produced in
+      various countries. Their styles, textures and flavors depend on the origin
+      of the milk (including the animal's diet), whether they have been
+      pasteurized, the butterfat content, the bacteria and mold, the processing,
+      and how long they have been aged for. Herbs, spices, or wood smoke may be
+      used as flavoring agents. The yellow to red color of many cheeses is
+      produced by adding annatto. Other ingredients may be added to some
+      cheeses, such as black pepper, garlic, chives or cranberries. A
+      cheesemonger, or specialist seller of cheeses, may have expertise with
+      selecting the cheeses, purchasing, receiving, storing and ripening
+      them.[2]
+    </p>
+    <img
+      class="photo show-on-scroll"
+      src="https://images.unsplash.com/photo-1589881133595-a3c085cb731d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=701&q=80"
+    />
+    <p>
+      For a few cheeses, the milk is curdled by adding acids such as vinegar or
+      lemon juice. Most cheeses are acidified to a lesser degree by bacteria,
+      which turn milk sugars into lactic acid, then the addition of rennet
+      completes the curdling. Vegetarian alternatives to rennet are available;
+      most are produced by fermentation of the fungus Mucor miehei, but others
+      have been extracted from various species of the Cynara thistle family.
+      Cheesemakers near a dairy region may benefit from fresher, lower-priced
+      milk, and lower shipping costs.
+    </p>
+    <img
+      class="photo show-on-scroll"
+      src="https://images.unsplash.com/photo-1519411792752-25c2468cccb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1354&q=80"
+    />
+    <p>
+      Cheese is valued for its portability, long shelf life, and high content of
+      fat, protein, calcium, and phosphorus. Cheese is more compact and has a
+      longer shelf life than milk, although how long a cheese will keep depends
+      on the type of cheese.[3] Hard cheeses, such as Parmesan, last longer than
+      soft cheeses, such as Brie or goat's milk cheese. The long storage life of
+      some cheeses, especially when encased in a protective rind, allows selling
+      when markets are favorable. Vacuum packaging of block-shaped cheeses and
+      gas-flushing of plastic bags with mixtures of carbon dioxide and nitrogen
+      are used for storage and mass distribution of cheeses in the 21st century
+    </p>
+
+    <img class="photo show-on-scroll" src="img1.jpg" />
+
+    <h2 class="endText">Bon appetit</h2>
+
+    <script>
+      let scroll =
+        window.requestAnimationFrame ||
+        function (callback) {
+          window.setTimeout(callback, 1000 / 60);
+        };
+
+      let elementToShow = document.querySelectorAll(".show-on-scroll");
+
+      loop = () => {
+        elementToShow.forEach((element) => {
+          if (isElementInViewport(element)) {
+            element.classList.add("is-visible");
+          } else {
+            element.classList.remove("is-visible");
+          }
+        });
+        scroll(loop);
+      };
+      // Call the loop for the first time
+      loop();
+
+      function isElementInViewport(el) {
+        // special bonus for those using jQuery
+        if (typeof jQuery === "function" && el instanceof jQuery) {
+          el = el[0];
+        }
+        var rect = el.getBoundingClientRect();
+        return (
+          (rect.top <= 0 && rect.bottom >= 0) ||
+          (rect.bottom >=
+            (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.top <=
+              (window.innerHeight || document.documentElement.clientHeight)) ||
+          (rect.top >= 0 &&
+            rect.bottom <=
+              (window.innerHeight || document.documentElement.clientHeight))
+        );
+      }
+    </script>
+  </body>
+</html>
